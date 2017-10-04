@@ -109,7 +109,7 @@ public class ProviderBundleTrackerCustomizerTest {
 
         BundleContext implBC = EasyMock.createMock(BundleContext.class);
         EasyMock.<Object>expect(implBC.registerService(
-                EasyMock.eq("org.apache.aries.mytest.MySPI"),
+                EasyMock.aryEq(new String[]{"org.apache.aries.mytest.MySPI"}),
                 EasyMock.isA(ServiceFactory.class),
                 (Dictionary<String,?>) EasyMock.anyObject())).andReturn(EasyMock.createNiceMock(ServiceRegistration.class)).times(3);
         EasyMock.replay(implBC);
@@ -160,7 +160,7 @@ public class ProviderBundleTrackerCustomizerTest {
     private BundleContext mockSPIBundleContext(ServiceRegistration sreg) {
         BundleContext implBC = EasyMock.createMock(BundleContext.class);
         EasyMock.<Object>expect(implBC.registerService(
-                EasyMock.eq("org.apache.aries.mytest.MySPI"),
+                EasyMock.aryEq(new String[] {"org.apache.aries.mytest.MySPI"}),
                 EasyMock.isA(ServiceFactory.class),
                 (Dictionary<String,?>) EasyMock.anyObject())).andReturn(sreg);
         EasyMock.replay(implBC);
